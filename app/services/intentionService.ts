@@ -34,3 +34,18 @@ function createTodayIntention(
     };
 }
 
+export async function  getTodayIntention(): Promise <Intention>{
+    const today = getTodayDate();
+    const stored = await loadStoredIntention();
+    
+    if (!stored || stored.date !== today){
+        const newIntention = createTodayIntention(
+            'My Intention for Today',
+            'Focus on completing my tasks efficiently.',
+        );
+        await saveIntention(newIntention);
+        return newIntention;
+    }
+    return stored;
+}
+
