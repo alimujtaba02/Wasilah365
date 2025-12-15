@@ -1,24 +1,34 @@
 import { Text, View } from '@/components/Themed';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, StyleSheet } from 'react-native';
+import { getTodayIntention, markIntentionComplete } from '../services/intentionService';
+import { Intention } from '../types/intention';
 
 export default function HomeScreen() {
-  const [isComplete, setIsComplete] = useState(false);
+  const [intention, setIntention] = useState<Intention | null>(null);
+
+  useEffect(() => {
+    getTodayIntention().then(setIntention);
+  }, []);
+
+  if (!intention) {
+    return <Text>Loading...</Text>;
+  }
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Today</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      {isComplete ? (
-        <Text>Intention marked as complete!</Text>
+      <Text style={styles.title}>{intention.title}</Text>
+      <Text>{intention.description}</Text>
+      {intention.completed ? (
+        <Text>✅ Completed</Text>
       ) : (
-        <>
-          <Text>This is my intention today</Text>
-          <Button
-            title="Intention Complete"
-            onPress={() => setIsComplete(true)}
-          />
-        </>
+        <Button
+          title="Mark as Complete"
+          onPress={async () => {
+            const updated = await markIntentionComplete();
+            setIntention(updated);
+          }}
+        />
       )}
     </View>
   );
