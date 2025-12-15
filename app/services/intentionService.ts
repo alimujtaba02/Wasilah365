@@ -49,3 +49,16 @@ export async function  getTodayIntention(): Promise <Intention>{
     return stored;
 }
 
+export async function markIntentionComplete(): Promise<Intention>{
+    const intention = await getTodayIntention();
+    if (intention.completed === true){
+        return intention;
+    }
+    const updatedIntention = {
+        ...intention,
+        completed: true,
+    };
+    await saveIntention(updatedIntention);
+    return updatedIntention;
+
+}
