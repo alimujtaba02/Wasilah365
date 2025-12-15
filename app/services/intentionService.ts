@@ -2,6 +2,10 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Intention } from '../types/intention';
 
 const INTENTION_STORAGE_KEY= 'TODAY_INTENTION';
+async function saveIntention(intention: Intention): Promise<void> {
+    await AsyncStorage.setItem(INTENTION_STORAGE_KEY, 
+        JSON.stringify(intention));
+}
 
 async function loadStoredIntention(): Promise<Intention | null> {
     const raw = await AsyncStorage.getItem(INTENTION_STORAGE_KEY);
