@@ -3,14 +3,18 @@
 This document outlines architectural decisions at a **conceptual level**, not implementation detail.
 
 ## Frontend
-- Built with React Native using Expo
-- Screen-based navigation (intentions, prayer, reflection)
+- Built with React Native using Expo and Expo Router
+- Tab navigation: Home (intention), Intentions (placeholder), Settings (placeholder)
 - Emphasis on simplicity and readability
 
 ## Data Model (Conceptual)
 - Intention
+  - id
+  - title
+  - description
+  - completed
   - date
-  - text
+  - category (optional)
 - Reflection
   - date
   - optional notes
@@ -19,7 +23,7 @@ This document outlines architectural decisions at a **conceptual level**, not im
   - calculated or fetched
 
 ## Data Storage
-- Local-first persistence (AsyncStorage or similar)
+- Local-first persistence using AsyncStorage
 - No hard dependency on backend in V1
 - Sync is optional and deferred
 
@@ -36,3 +40,8 @@ This document outlines architectural decisions at a **conceptual level**, not im
 - Avoid premature abstraction
 - Prefer clarity over cleverness
 - Optimize for iteration, not scale
+
+## Current Implementation Snapshot
+- `intentionService` seeds a default intention each day and persists completion to AsyncStorage
+- Home screen reads the stored intention and allows marking it complete
+- No backend calls, auth, or reflection/prayer features are implemented yet

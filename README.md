@@ -5,26 +5,27 @@ The app focuses on simple accountability, habit formation, and time-aware guidan
 
 ⸻
 
+# Current Functionality
+- Expo Router tab scaffold with `Home`, `Intentions`, and `Settings`
+- Home screen loads today's intention from local storage (AsyncStorage), seeding a default if none exists
+- Mark intention as complete updates local storage for the current day
+- Other tabs are placeholders while we build out the remaining loop
 
 # v1 Goals
-
 The first version of Wasilah365 aims to deliver a clean, reliable core loop:
-	•	Create and manage personal intentions
-	•	Track daily follow-through using event-based completion
-	•	Allow short reflections tied to daily actions
-	•	Support anonymous local usage and logged-in multi-device sync
-	•	Function offline without blocking core interactions
+- Create and manage personal intentions
+- Track daily follow-through using event-based completion
+- Allow short reflections tied to daily actions
+- Support anonymous local usage and logged-in multi-device sync
+- Function offline without blocking core interactions
 
-# Non-goals for v1:
-	•	Advanced analytics or insights
-	•	Machine learning features
-	•	UI polish beyond functional clarity
+# Non-goals for v1
+- Advanced analytics or insights
+- Machine learning features
+- UI polish beyond functional clarity
 
 ⸻
 
 # Status
-
-Current phase: Initial scaffold / walking skeleton
-
-Primary target platforms: iOS, Android
-
+- Current phase: Initial scaffold / walking skeleton
+- Primary target platforms: iOS, Android

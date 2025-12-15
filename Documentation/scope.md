@@ -29,3 +29,8 @@ This document defines the **explicit scope** of version 1 to prevent feature cre
 - Codebase remains understandable and flexible
 
 If a feature does not support these outcomes, it does not belong in V1.
+
+## Current Progress (as of this snapshot)
+- Daily intention is auto-created and stored locally with completion tracking
+- Navigation scaffold exists for Intentions and Settings
+- Prayer times, reflections, history, and reminders are not implemented yet
