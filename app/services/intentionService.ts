@@ -61,3 +61,13 @@ export async function markIntentionComplete(): Promise<Intention> {
   await saveIntention(updatedIntention);
   return updatedIntention;
 }
+
+export async function setTodayIntention(
+  title: string,
+  description: string,
+  category?: string,
+): Promise<Intention> {
+  const newIntention = createTodayIntention(title, description, category);
+  await saveIntention(newIntention);
+  return newIntention;
+}
